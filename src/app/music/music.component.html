@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example of Bootstrap 3 Fixed Navbar</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+
+</style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="glyphicon glyphicon-music" > </span>
+            <a href="#" class="navbar-brand">My Music Station</a>
+        </div>
+        <!-- Collection of nav links and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Artists</a></li>
+                <li><a href="#">Radio</a></li>
+                <li><a href="#">More</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a href="#">Subscribe</a>
+                </li>
+                <li>
+                  <span class ="glyphicon glyphicon-thumbs-up"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="jumbotron">
+    <div>
+        <div class="table-responsive">
+          <table class="table table-hover" >
+                <thead>
+                  <tr>
+                    <th><u>Name</u></th>
+                    <th><u>Cover</u></th>
+                    <th><u>Bio</u></th>
+                    <th><u>Genre</u></th>
+                    <th><u><button class="btn btn-success" (click)="toggleAlbums()">
+                        {{showAlbum?"Hide Album":"Show Album"}}
+                    </button></u></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor= "let music of musics; let i=index" >
+                    <td><b>{{i+1}}<b>)  </b>{{music.name}}</b></td>
+                    <td>
+                        <img [src]="music.cover" width="175" height="200" />
+
+                    </td>
+                    <td>{{music.bio}}</td>
+                    <td>{{music.genre}}</td>
+                    <td>
+                        <div class="col-md-4">
+                            <input type="checkbox"  />
+                          </div>
+                    </td>
+                        <div class="table-responsive">
+                            <table class="table table-hover" *ngIf="showAlbum" >
+                                  <thead>
+                                    <tr>
+                                      <th>Title</th>
+                                      <th>Year</th>
+                                      <th>Cover</th>
+                                      <th>Songs</th>
+                                    </tr>
+                                  </thead>
+                                      <tr *ngFor= "let album of music.albums">
+                                        <td >{{album.title}}</td>
+                                        <td>{{album.year}}</td>
+                                        <td>{{album.cover}}</td>
+                                        <td>{{album.price}}</td>
+                                      </tr>
+                              </table>
+                          </di
